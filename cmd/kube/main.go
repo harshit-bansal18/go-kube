@@ -7,15 +7,6 @@ import (
 	"github.com/harshit-bansal18/go-kube/config"
 )
 
-func multiply() {
-	fmt.Println("Enter two numbers (separated by space) in one line\n Program outputs their product.")
-	for {
-		var a, b int
-		fmt.Scanln(&a, &b)
-		fmt.Println("Output: ", a*b)
-	}
-}
-
 func main() {
 	fmt.Println("Starting Go module....")
 

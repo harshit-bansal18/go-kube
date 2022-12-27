@@ -56,7 +56,7 @@ func (client *kubeconfigclient) ReadConfig(name string) map[string]string {
 func (client *kubeconfigclient) WatchConfig(name string) {
 	watchif, err := client.cmi.Watch(context.TODO(), metav1.SingleObject(metav1.ObjectMeta{
 		Namespace: client.namespace,
-		Name: name,
+		Name:      name,
 	}))
 	if err != nil {
 		panic(err.Error())
@@ -76,15 +76,15 @@ func (client *kubeconfigclient) WatchConfig(name string) {
 				if updatedMap, ok := event.Object.(*corev1.ConfigMap); ok {
 					fmt.Println("Received updates on ConfigMap")
 					fmt.Println(updatedMap.Data)
-				client.Mutex.Unlock()
 				}
-			
+				client.Mutex.Unlock()
+
 			default:
 				// do nothing here
 			}
 		} else {
 			// chan closed -> stop watching
-			return			
+			return
 		}
 
 	}
